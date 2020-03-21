@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import './transaction.dart';
 import './Cards.dart';
+import 'TransactionAdder.dart';
 
 void main()=> runApp(MyApp());
 
@@ -41,6 +42,7 @@ class MyHomePage extends StatelessWidget {
             elevation: 5,
           ),
         ),
+        TransactionAdder(),//This will add the transaction to thee list
         Column(children: transaction.map((tx) {
           return NewCards(amount :tx.amount.toString(), title:tx.title,date: DateFormat.yMMMd().format(tx.date));
         }).toList(),)

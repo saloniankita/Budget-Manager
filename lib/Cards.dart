@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 //import 'package:unicode/unicode.dart';
 
-class NewCards extends StatelessWidget {
+class NewCards extends StatefulWidget {
   final String amount, date, title;
   static final Runes input = new Runes(' \u{20B9}'); 
-  final String rupeeSymbol= String.fromCharCodes(input);
-  
+
   NewCards({this.amount, this.date, this.title});
+
+  @override
+  _NewCardsState createState() => _NewCardsState();
+}
+
+class _NewCardsState extends State<NewCards> {
+  final String rupeeSymbol= String.fromCharCodes(NewCards.input);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +20,7 @@ class NewCards extends StatelessWidget {
         child:Row(children: <Widget>[
         Container(
           child: 
-                Text('$rupeeSymbol$amount',
+                Text('$rupeeSymbol${widget.amount}',
                      style:
                            TextStyle(
                              fontWeight: FontWeight.bold,
@@ -36,7 +42,7 @@ class NewCards extends StatelessWidget {
             Container(
               child: Text(
                           //title
-                          title,
+                          widget.title,
                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
@@ -46,7 +52,7 @@ class NewCards extends StatelessWidget {
 
             ),//container for the title ends here
             Container(
-              child: Text(date,
+              child: Text(widget.date,
                           style: TextStyle(color: Colors.grey),),
               ), //container for date
           ], 
