@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './transaction.dart';
 import './Cards.dart';
@@ -28,7 +29,10 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar( 
                       title: Text('Budget Planner'),centerTitle: true,),
-      body: Column(children: <Widget>[
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
         Container(
           width: double.infinity,
           child: Card(
@@ -38,7 +42,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         Column(children: transaction.map((tx) {
-          return NewCards(amount :tx.amount.toString(), title:tx.title,date: tx.date.toString());
+          return NewCards(amount :tx.amount.toString(), title:tx.title,date: DateFormat.yMMMd().format(tx.date));
         }).toList(),)
       ],
       ),

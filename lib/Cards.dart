@@ -14,7 +14,7 @@ class NewCards extends StatelessWidget {
         child:Row(children: <Widget>[
         Container(
           child: 
-                Text('$rupeeSymbol $amount',
+                Text('$rupeeSymbol$amount',
                      style:
                            TextStyle(
                              fontWeight: FontWeight.bold,
