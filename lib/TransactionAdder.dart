@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class TransactionAdder extends StatelessWidget {
   TransactionAdder();
-  final titleInput =controller; 
-  final amountInput;
+  final titleInput = TextEditingController(); 
+  final amountInput =TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Card(
