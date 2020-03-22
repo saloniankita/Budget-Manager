@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import './transaction.dart';
-import './Cards.dart';
-import 'TransactionAdder.dart';
+import './Widgets/Transactions_Card_List.dart';
+import './Widgets/TransactionAdder.dart';
 
 void main()=> runApp(MyApp());
 
@@ -18,13 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transaction =[
-    Transaction(id: '1', title: 'New Shoes', amount: 29.99, date: DateTime.now() ),
-    Transaction(id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now() ),
-  ];
-  
-  
-  
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +34,9 @@ class MyHomePage extends StatelessWidget {
             elevation: 5,
           ),
         ),
-        TransactionAdder(),//This will add the transaction to thee list
-        Column(children: transaction.map((tx) {
-          return NewCards(amount :tx.amount.toString(), title:tx.title,date: DateFormat.yMMMd().format(tx.date));
-        }).toList(),)
-      ],
+        TransactionAdder(),//This will add the transaction to the list
+        NewCards(),//Display the List of Transactions
+           ],
       ),
     );
   }

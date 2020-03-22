@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
-//import 'package:unicode/unicode.dart';
+import 'package:intl/intl.dart';
+
+import '../Models/Transaction.dart';
 
 class NewCards extends StatefulWidget {
-  final String amount, date, title;
-  static final Runes input = new Runes(' \u{20B9}'); 
-
-  NewCards({this.amount, this.date, this.title});
-
+  
   @override
   _NewCardsState createState() => _NewCardsState();
 }
 
 class _NewCardsState extends State<NewCards> {
-  final String rupeeSymbol= String.fromCharCodes(NewCards.input);
+  
+  static final Runes input = new Runes(' \u{20B9}'); //these two lines add rupees symbol in the 
+  final String rupeeSymbol= String.fromCharCodes(input);// output code.
+
+  final List<Transaction> _transactionObject=[
+    Transaction(id: '1', title: 'New Shoes', amount: 29.99, date: DateTime.now() ),
+    Transaction(id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now() ),
+  ]; //Transaction Model with dummy data and it will also hold new transactions.
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child:Row(children: <Widget>[
-        Container(
-          child: 
-                Text('$rupeeSymbol${widget.amount}',
+   
+    return Column(
+      children: _transactionObject.map((tx) 
+              { return Card(
+                    child:Row(
+                        children: <Widget>[
+                Container( child: Text('$rupeeSymbol${tx.amount.toString()}', //Amount should be inserted here.
                      style:
                            TextStyle(
                              fontWeight: FontWeight.bold,
@@ -35,14 +42,14 @@ class _NewCardsState extends State<NewCards> {
                   border:Border.all(color: Colors.purple,width: 2.0),
                 ),
         ),//Container for the amount
+        
+        
         Column( //Column for the title and date
           crossAxisAlignment: CrossAxisAlignment.start,
           
           children: <Widget>[
             Container(
-              child: Text(
-                          //title
-                          widget.title,
+              child: Text(tx.title,//title should be punched here
                           style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold,
@@ -51,14 +58,18 @@ class _NewCardsState extends State<NewCards> {
                       ),
 
             ),//container for the title ends here
+            
             Container(
-              child: Text(widget.date,
+              child: Text(DateFormat.yMMMd().format(tx.date),//Date should be punched here
                           style: TextStyle(color: Colors.grey),),
               ), //container for date
           ], 
         ),
         ],
         ),
-    );//Card is returned
-  }
-}
+      ); //Card is returned
+       }//Arrow function is closed
+      ).toList(), //map is closing here
+    );//Column is returend 
+  } //Build Widget method is closed Here
+}//new Card State Class is closed 
