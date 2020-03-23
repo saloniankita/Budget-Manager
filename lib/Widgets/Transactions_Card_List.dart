@@ -8,7 +8,7 @@ class NewCards extends StatelessWidget {
   final List<Transaction> transactionObject;
   NewCards(this.transactionObject);
   
-  static final Runes input = new Runes(' \u{20B9}'); //these two lines add rupees symbol in the 
+  static final Runes input = new Runes('\u{20B9}'); //these two lines add rupees symbol in the 
   final String rupeeSymbol= String.fromCharCodes(input);// output code.
 
 
@@ -45,11 +45,7 @@ class NewCards extends StatelessWidget {
             children: <Widget>[
               Container(
                 child: Text(transactionObject[index].title,//title should be punched here
-                            style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 16,
-                            ),
+                            style: Theme.of(context).textTheme.title,//Global styling
                         ),
 
               ),//container for the title ends here
