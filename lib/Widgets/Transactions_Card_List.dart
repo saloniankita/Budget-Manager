@@ -27,14 +27,14 @@ class NewCards extends StatelessWidget {
                              TextStyle(
                                fontWeight: FontWeight.bold,
                                fontSize: 22,
-                               color: Colors.purple,
+                               color: Theme.of(context).primaryColor,
                                ),
                        textAlign: TextAlign.center,
                                ),
                   margin: EdgeInsets.symmetric(horizontal:15.0 ,vertical: 10.0 ),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration( 
-                    border:Border.all(color: Colors.purple,width: 2.0),
+                    border:Border.all(color: Theme.of(context).primaryColor,width: 2.0),
                   ),
           ),//Container for the amount
           

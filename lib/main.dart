@@ -11,6 +11,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Budget Planner',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amber,
+        appBarTheme: AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith(
+          title: TextStyle(
+            fontFamily: 'QuickSand',
+            fontFamilyFallback: ['OpenSans'],
+            fontSize: 20,
+
+          )
+        ),
+        ),      
+      ),
+      
       home: MyHomePage(),
     );
   }
