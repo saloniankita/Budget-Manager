@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './Widgets/Transactions_Card_List.dart';
 import './Widgets/TransactionAdder.dart';
 import './Models/Transaction.dart';
+import './Widgets/charts.dart';
 
 void main()=> runApp(MyApp());
 
@@ -47,10 +48,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 final List<Transaction> _transactionObject = [
-    Transaction(
-        id: '1', title: 'New Shoes', amount: 29.99, date: DateTime.now()),
-    Transaction(
-        id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '1', title: 'New Shoes', amount: 29.99, date: DateTime.now()),
+    // Transaction(
+    //     id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now()),
   ]; //Transaction Model with dummy data and it will also hold new transactions.
 
   void _addNewTransaction(String txTitle, double txAmount) {
@@ -97,11 +98,7 @@ final List<Transaction> _transactionObject = [
               children: <Widget>[
             Container(
               width: double.infinity,
-              child: Card(
-                child:Text('CHART!'),
-                color: Colors.blue,
-                elevation: 5,
-              ),
+              child: Charts(_transactionObject),
             ),
             //TransactionAdder(_addNewTransaction), //This will add the transaction to the list
             NewCards(_transactionObject), //Display the List of Transactions],

@@ -16,8 +16,19 @@ class NewCards extends StatelessWidget {
   Widget build(BuildContext context) {
    
     return Container(
-      height: 400,
-      child: ListView.builder(
+      height: 500,
+      child:  transactionObject.isEmpty ? Column(children: <Widget>[
+          Text('Nothing added you lousy brat',
+          style: Theme.of(context).textTheme.title,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5 ,vertical:20),
+            height: 400,
+            child: Image.asset('assets/images/waiting.png',
+            fit: BoxFit.cover,)
+            ),
+      ],)
+       : ListView.builder(
          itemBuilder: (ctx,index) {
            return Card(
                       child:Row(
