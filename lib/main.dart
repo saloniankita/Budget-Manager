@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontSize: 18,
             ),
+          button: TextStyle(
+            color:Colors.white,
+          )  
           ),
         appBarTheme: AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith(
           title: TextStyle(
@@ -54,11 +57,11 @@ final List<Transaction> _transactionObject = [
     //     id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now()),
   ]; //Transaction Model with dummy data and it will also hold new transactions.
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime txDate) {
     final newTx = Transaction(
         title: txTitle,
         amount: txAmount,
-        date: DateTime.now(),
+        date: txDate,
         id: DateTime.now().toString()
         );
    
@@ -68,6 +71,12 @@ final List<Transaction> _transactionObject = [
   
   }
 
+  void _delTransaction(String id)
+  {
+    setState(() {
+      _transactionObject.removeWhere((tx)=> tx.id == id);
+    });
+  }
 
   void _starttx(BuildContext ctx)
   {
@@ -101,7 +110,7 @@ final List<Transaction> _transactionObject = [
               child: Charts(_transactionObject),
             ),
             //TransactionAdder(_addNewTransaction), //This will add the transaction to the list
-            NewCards(_transactionObject), //Display the List of Transactions],
+            NewCards(_transactionObject,_delTransaction), //Display the List of Transactions],
             ],
           ),
       ),
