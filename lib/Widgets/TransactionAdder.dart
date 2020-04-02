@@ -63,7 +63,7 @@ class _TransactionAdderState extends State<TransactionAdder> {
               children: <Widget>[
                 Expanded(
                     child: Text(_selectedDate == null
-                        ? 'No date chosen mofo'
+                        ? 'No date chosen'
                         : 'Picked Date:${DateFormat.yMd().format(_selectedDate)}')),
                 RaisedButton(
                   textColor: Theme.of(context).primaryColor,

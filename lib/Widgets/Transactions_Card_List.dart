@@ -20,7 +20,7 @@ class NewCards extends StatelessWidget {
           ? Column(
               children: <Widget>[
                 Text(
-                  'Nothing added you lousy brat',
+                  'Nothing add as of now',
                   style: Theme.of(context).textTheme.title,
                 ),
                 Container(
