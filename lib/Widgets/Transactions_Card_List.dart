@@ -6,7 +6,8 @@ import '../Models/Transaction.dart';
 class NewCards extends StatelessWidget {
   final List<Transaction> transactionObject;
   final Function delTransaction;
-  NewCards(this.transactionObject,this.delTransaction);
+  final AppBar appBar;
+  NewCards(this.transactionObject,this.delTransaction,this.appBar);
 
   static final Runes input =
       new Runes('\u{20B9}'); //these two lines add rupees symbol in the
@@ -14,8 +15,14 @@ class NewCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   final mediaQuery =MediaQuery.of(context);
+   final widgetHeight =mediaQuery.size.height - mediaQuery.padding.top -appBar.preferredSize.height; 
+
+
+
     return Container(
-      height: 500,
+      height: widgetHeight * 0.6 ,
+
       child: transactionObject.isEmpty
           ? Column(
               children: <Widget>[
@@ -25,7 +32,7 @@ class NewCards extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    height: 400,
+                    height: widgetHeight * 0.5,
                     child: Image.asset(
                       'assets/images/waiting.png',
                       fit: BoxFit.cover,

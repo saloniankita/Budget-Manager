@@ -1,11 +1,17 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import './Widgets/Transactions_Card_List.dart';
 import './Widgets/TransactionAdder.dart';
 import './Models/Transaction.dart';
 import './Widgets/charts.dart';
 
-void main()=> runApp(MyApp());
+void main()
+{
+   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown,DeviceOrientation.portraitUp,]);
+   runApp(MyApp());
+  }
 
 class MyApp extends StatelessWidget {
   @override
@@ -41,21 +47,13 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  
-     
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
 
-final List<Transaction> _transactionObject = [
-    // Transaction(
-    //     id: '1', title: 'New Shoes', amount: 29.99, date: DateTime.now()),
-    // Transaction(
-    //     id: '2', title: 'Extra New Shoes', amount: 19.99, date: DateTime.now()),
-  ]; //Transaction Model with dummy data and it will also hold new transactions.
+final List<Transaction> _transactionObject = []; //Transaction Model with dummy data and it will also hold new transactions.
 
   void _addNewTransaction(String txTitle, double txAmount, DateTime txDate) {
     final newTx = Transaction(
@@ -91,30 +89,38 @@ final List<Transaction> _transactionObject = [
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar( 
+    final appBar = AppBar( 
                       title: Text('Budget Planner'),centerTitle: true,
                       actions: <Widget> 
                       [
                         IconButton(icon: Icon(Icons.add),onPressed:()=> _starttx(context),)
                       ]
-                      ),
+                      );
+    
+     final mediaQuery =MediaQuery.of(context);
+     final widgetHeight =mediaQuery.size.height - mediaQuery.padding.top -appBar.preferredSize.height; 
+
+
+    return Scaffold(
+      appBar: appBar,
                       
       body: SingleChildScrollView(
               child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Charts(_transactionObject),
-            ),
-            //TransactionAdder(_addNewTransaction), //This will add the transaction to the list
-            NewCards(_transactionObject,_delTransaction), //Display the List of Transactions],
-            ],
+                Container(
+                  width: double.infinity,
+                  child: Charts(_transactionObject),
+                  ),
+                Container(
+                  height: widgetHeight *0.4,
+                  child: NewCards(_transactionObject,_delTransaction,appBar)
+                  ), //Display the List of Transactions],
+              ],
           ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Platform.isIOS ?Container(): FloatingActionButton(
         child: Icon(Icons.add) ,onPressed:()=> _starttx(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
