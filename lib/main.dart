@@ -110,11 +110,12 @@ final List<Transaction> _transactionObject = []; //Transaction Model with dummy 
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Container(
+                  height: widgetHeight *0.3,
                   width: double.infinity,
                   child: Charts(_transactionObject),
                   ),
                 Container(
-                  height: widgetHeight *0.4,
+                  height: widgetHeight *0.7,
                   child: NewCards(_transactionObject,_delTransaction,appBar)
                   ), //Display the List of Transactions],
               ],

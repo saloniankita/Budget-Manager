@@ -32,7 +32,7 @@ class NewCards extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-                    height: widgetHeight * 0.5,
+                    height: widgetHeight * 0.45,
                     child: Image.asset(
                       'assets/images/waiting.png',
                       fit: BoxFit.cover,
