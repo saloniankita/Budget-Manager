@@ -6,7 +6,7 @@ A app that can track and help you to manage your expenses.
 
 Clone the project and use "flutter run" command inside the cloned folder.
 
-# TO-DO list or future updates
+## TO-DO list or future updates
 
 The app is working fine. To make further improvements, some of the features listen below can be added : 
 
